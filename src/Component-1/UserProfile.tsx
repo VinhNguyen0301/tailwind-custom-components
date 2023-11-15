@@ -8,7 +8,7 @@ const UserProfile = () => {
       />
       <div className="space-y-7 text-[#1C2862]">
         <div>
-          <h1 className="text-3xl font-bold">Vinh Nguyen</h1>
+          <h1 className="font-popi text-3xl font-bold">Vinh Nguyen</h1>
           <h2 className="mt-1">Developer</h2>
         </div>
 
