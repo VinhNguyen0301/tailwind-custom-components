@@ -1,7 +1,6 @@
 import React from "react";
 
 const UserList = () => {
-  console.log("test");
   return (
     <div className="min-w-[40rem] rounded-sm bg-white p-16 shadow">
       <h1 className="font-meri text-3xl font-black">User</h1>
