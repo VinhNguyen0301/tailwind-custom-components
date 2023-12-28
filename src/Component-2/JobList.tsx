@@ -167,7 +167,7 @@ const JobList: React.FC = () => {
   return (
     <div className="w-[40rem] rounded-md bg-white p-16">
       <div className="flex gap-2">
-        <div className="relative grow">
+        <div className="relative grow rounded-md border-2 border-gray-300">
           <input
             className=" mr-2  w-full rounded-lg border-gray-300 px-4  py-3 pl-10"
             type="text"
