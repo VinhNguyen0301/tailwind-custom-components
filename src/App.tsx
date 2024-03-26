@@ -3,6 +3,7 @@ import JobList from "./Component-2/JobList";
 import Collections from "./Component-3/Collections";
 import ReviewForm from "./Component-4/ReviewForm";
 import UserList from "./Component-5/UserList";
+import Charts from "./Component-6/Chart";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <JobList /> */}
       {/* <Collections /> */}
       {/* <ReviewForm /> */}
-      <UserList />
+      {/* <UserList /> */}
+      <Charts />
     </h1>
   );
 }
