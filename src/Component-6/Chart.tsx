@@ -4,6 +4,7 @@ import Map from "./Map";
 import { barChartDataDailyTraffic } from "./variables/charts";
 import { barChartOptionsDailyTraffic } from "./variables/charts";
 import BarChart from "./BarChart/BarChart";
+import TabsButton from "./TabsButton";
 
 const Charts = () => {
   return (
@@ -14,6 +15,7 @@ const Charts = () => {
             chartData={barChartDataDailyTraffic}
             chartOptions={barChartOptionsDailyTraffic}
           />
+          <TabsButton />
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
               Product Transactions Chart
@@ -22,7 +24,7 @@ const Charts = () => {
         </div>
         <div className="rounded-3xl bg-white p-6">
           <Map />
-
+          <TabsButton />
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
               Product Volume by Country
