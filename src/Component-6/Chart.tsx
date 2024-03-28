@@ -11,11 +11,14 @@ const Charts = () => {
     <div className="w-full rounded-lg bg-[#EFF0F1] p-16 shadow-lg">
       <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
         <div className="rounded-3xl bg-white p-6">
-          <BarChart
-            chartData={barChartDataDailyTraffic}
-            chartOptions={barChartOptionsDailyTraffic}
-          />
+          <div style={{ height: "400px" }}>
+            <BarChart
+              chartData={barChartDataDailyTraffic}
+              chartOptions={barChartOptionsDailyTraffic}
+            />
+          </div>
           <TabsButton />
+
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
               Product Transactions Chart
@@ -23,8 +26,11 @@ const Charts = () => {
           </div>
         </div>
         <div className="rounded-3xl bg-white p-6">
-          <Map />
+          <div style={{ height: "400px" }}>
+            <Map />
+          </div>
           <TabsButton />
+
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
               Product Volume by Country
