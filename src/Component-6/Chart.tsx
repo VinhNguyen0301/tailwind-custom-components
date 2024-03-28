@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 import Map from "./Map";
 import { barChartDataDailyTraffic } from "./variables/charts";
@@ -6,8 +6,22 @@ import { barChartOptionsDailyTraffic } from "./variables/charts";
 import BarChart from "./BarChart/BarChart";
 import TabsButton from "./TabsButton";
 
-const Charts: React.FC = () => {
+interface TableRow {
+  product: string;
+  transaction: string;
+  usDollarValue: string;
+  quantity: string;
+  containers: string;
+  weight: string;
+}
+interface TableProps {
+  data: TableRow[];
+}
+
+const Charts: React.FC<TableProps> = () => {
   const [selectedTab, setSelectedTab] = useState("Transactions");
+  const [data, setData] = useState<TableRow[]>([]);
+
   const tabs = [
     "Transactions",
     "Dollar Value",
@@ -18,8 +32,21 @@ const Charts: React.FC = () => {
 
   const handleTabClick = (tab: string) => {
     setSelectedTab(tab);
-    // Add logic to handle tab click event if needed
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("src/Component-6/table-data.json");
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="w-full rounded-lg bg-[#EFF0F1] p-16 shadow-lg">
@@ -38,7 +65,7 @@ const Charts: React.FC = () => {
           />
 
           <div className="flex pt-6">
-            <p className="grow text-center font-popi text-2xl font-medium">
+            <p className="grow text-center font-popi text-2xl font-medium text-[#5E37FF]">
               Product Transactions Chart
             </p>
           </div>
@@ -54,7 +81,7 @@ const Charts: React.FC = () => {
           />
 
           <div className="flex pt-6">
-            <p className="grow text-center font-popi text-2xl font-medium">
+            <p className="grow text-center font-popi text-2xl font-medium text-[#5E37FF]">
               Product Volume by Country
             </p>
           </div>
@@ -85,47 +112,51 @@ const Charts: React.FC = () => {
         </div>
       </div>
       <div className="mt-6 flex gap-2">
-        <table className="w-full border-collapse bg-white shadow-lg">
-          <tr>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Company</th>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Contact</th>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Country</th>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Column 4</th>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Column 5</th>
-            <th className="border bg-blue-100 px-8 py-4 text-left">Column 6</th>
-          </tr>
-          <tr className="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200">
-            <td className="border px-8 py-4">Alfreds Futterkiste</td>
-            <td className="border px-8 py-4">Dante Sparks</td>
-            <td className="border px-8 py-4">Italy</td>
-            <td className="border px-8 py-4">Alfreds Futterkiste</td>
-            <td className="border px-8 py-4">Dante Sparks</td>
-            <td className="border px-8 py-4">Italy</td>
-          </tr>
-          <tr className="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200">
-            <td className="border px-8 py-4">Centro comercial Moctezuma</td>
-            <td className="border px-8 py-4">Neal Garrison</td>
-            <td className="border px-8 py-4">Spain</td>
-            <td className="border px-8 py-4">Alfreds Futterkiste</td>
-            <td className="border px-8 py-4">Dante Sparks</td>
-            <td className="border px-8 py-4">Italy</td>
-          </tr>
-          <tr className="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200">
-            <td className="border px-8 py-4">Ernst Handel</td>
-            <td className="border px-8 py-4">Maggie O'Neill</td>
-            <td className="border px-8 py-4">Austria</td>
-            <td className="border px-8 py-4">Alfreds Futterkiste</td>
-            <td className="border px-8 py-4">Dante Sparks</td>
-            <td className="border px-8 py-4">Italy</td>
-          </tr>
-          <tr className="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200">
-            <td className="border px-8 py-4">Ernst Handel</td>
-            <td className="border px-8 py-4">Maggie O'Neill</td>
-            <td className="border px-8 py-4">Austria</td>
-            <td className="border px-8 py-4">Alfreds Futterkiste</td>
-            <td className="border px-8 py-4">Dante Sparks</td>
-            <td className="border px-8 py-4">Italy</td>
-          </tr>
+        <table className="w-full border-collapse  rounded-lg bg-white shadow-lg">
+          <thead>
+            <tr>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                Product
+              </th>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                Transaction
+              </th>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                US Dollar Value
+              </th>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                Quantity
+              </th>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                Containers
+              </th>
+              <th className="border border-blue-100 bg-[#A3AED0] px-6 py-2 text-center">
+                Weight
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {data?.map((row, index) => (
+              <tr
+                key={index}
+                className="hover:bg-gray-50 focus:bg-gray-300 active:bg-red-200"
+              >
+                <td className="border px-6 py-2 text-center">{row.product}</td>
+                <td className="border px-6 py-2 text-center">
+                  {row.transaction}
+                </td>
+                <td className="border px-6 py-2 text-center">
+                  {row.usDollarValue}
+                </td>
+                <td className="border px-6 py-2 text-center">{row.quantity}</td>
+                <td className="border px-6 py-2 text-center">
+                  {row.containers}
+                </td>
+                <td className="border px-6 py-2 text-center">{row.weight}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
       <div className="gap-2">

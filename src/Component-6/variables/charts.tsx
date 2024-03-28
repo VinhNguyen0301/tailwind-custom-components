@@ -1,7 +1,7 @@
 export const barChartDataDailyTraffic = [
   {
     name: "Daily Traffic",
-    data: [20, 30, 40, 20, 45, 50, 30],
+    data: [20, 30, 40, 20, 45, 50, 30, 20, 30, 45, 50, 10],
   },
 ];
 
@@ -26,14 +26,27 @@ export const barChartOptionsDailyTraffic = {
     theme: "dark",
   },
   xaxis: {
-    categories: ["00", "04", "08", "12", "14", "16", "18"],
+    categories: [
+      "Al Fakher",
+      "Cartoon",
+      "Ice",
+      "Shoe",
+      "Mosses",
+      "Banana",
+      "Wester",
+      "Corton",
+      "Tobacco",
+      "Button",
+      "Sugar",
+      "Chair",
+    ],
     show: false,
     labels: {
       show: true,
       style: {
         colors: "#A3AED0",
-        fontSize: "14px",
-        fontWeight: "500",
+        fontSize: "10px",
+        fontWeight: "100",
       },
     },
     axisBorder: {
@@ -44,7 +57,7 @@ export const barChartOptionsDailyTraffic = {
     },
   },
   yaxis: {
-    show: false,
+    show: true,
     color: "black",
     labels: {
       show: true,

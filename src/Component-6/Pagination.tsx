@@ -1,4 +1,5 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+import { useState } from "react";
 
 const items = [
   {
@@ -25,6 +26,14 @@ const items = [
 ];
 
 export default function Pagination() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const page = parseInt(e.target.value);
+    if (!isNaN(page)) {
+      setCurrentPage(page);
+    }
+  };
   return (
     <div className="flex items-center justify-center border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div className="flex flex-1 justify-center sm:hidden">
@@ -104,6 +113,12 @@ export default function Pagination() {
             </a>
           </nav>
         </div>
+        <input
+          type="text"
+          value={currentPage}
+          onChange={handlePageChange}
+          className="ml-3 hidden w-16 rounded-md border border-gray-300 px-3 py-2 text-sm text-gray-900 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:flex"
+        />
       </div>
     </div>
   );

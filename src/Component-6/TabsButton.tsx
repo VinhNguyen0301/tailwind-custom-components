@@ -20,7 +20,7 @@ const TabsButton: React.FC<TabsButtonProps> = ({
               href="#"
               className={`inline-block  px-4 py-2 ${
                 selectedTab === tab
-                  ? "bg-blue-600 text-white"
+                  ? "bg-indigo-600 text-white"
                   : "bg-gray-100 hover:bg-gray-50 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
               }`}
               onClick={() => onTabClick(tab)}
