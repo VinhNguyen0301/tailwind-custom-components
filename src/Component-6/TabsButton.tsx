@@ -1,50 +1,35 @@
 import React from "react";
 
-const TabsButton = () => {
+interface TabsButtonProps {
+  tabs: string[]; // Array of tab names
+  selectedTab: string; // Name of the selected tab
+  onTabClick: (tab: string) => void; // Callback function to handle tab clicks
+}
+
+const TabsButton: React.FC<TabsButtonProps> = ({
+  tabs,
+  selectedTab,
+  onTabClick,
+}) => {
   return (
     <div>
       <ul className="mt-4 flex flex-wrap justify-center text-center text-sm font-medium text-gray-500 dark:text-gray-400">
-        <li className=" border border-gray-300 bg-gray-200">
-          <a
-            href="#"
-            className="active inline-block bg-blue-600 px-4 py-3 text-white"
-            aria-current="page"
-          >
-            Transactions
-          </a>
-        </li>
-        <li className=" border border-gray-300 bg-gray-200">
-          <a
-            href="#"
-            className="inline-block px-4 py-3 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
-          >
-            Dollar Value
-          </a>
-        </li>
-        <li className=" border border-gray-300 bg-gray-200">
-          <a
-            href="#"
-            className="inline-block px-4 py-3 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
-          >
-            Quantity
-          </a>
-        </li>
-        <li className=" border border-gray-300 bg-gray-200">
-          <a
-            href="#"
-            className="inline-block px-4 py-3 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
-          >
-            Containers
-          </a>
-        </li>
-        <li className=" border border-gray-300 bg-gray-200">
-          <a
-            href="#"
-            className="inline-block px-4 py-3 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
-          >
-            Weight
-          </a>
-        </li>
+        {tabs.map((tab, index) => (
+          <li key={index} className="rounded-sm border border-gray-300">
+            <a
+              href="#"
+              className={`inline-block  px-4 py-2 ${
+                selectedTab === tab
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-100 hover:bg-gray-50 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+              }`}
+              onClick={() => onTabClick(tab)}
+              style={{ fontSize: "0.8rem" }}
+            >
+              {tab}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   );

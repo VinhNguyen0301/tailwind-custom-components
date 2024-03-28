@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Pagination from "./Pagination";
 import Map from "./Map";
 import { barChartDataDailyTraffic } from "./variables/charts";
@@ -6,7 +6,21 @@ import { barChartOptionsDailyTraffic } from "./variables/charts";
 import BarChart from "./BarChart/BarChart";
 import TabsButton from "./TabsButton";
 
-const Charts = () => {
+const Charts: React.FC = () => {
+  const [selectedTab, setSelectedTab] = useState("Transactions");
+  const tabs = [
+    "Transactions",
+    "Dollar Value",
+    "Quantity",
+    "Containers",
+    "Weight",
+  ];
+
+  const handleTabClick = (tab: string) => {
+    setSelectedTab(tab);
+    // Add logic to handle tab click event if needed
+  };
+
   return (
     <div className="w-full rounded-lg bg-[#EFF0F1] p-16 shadow-lg">
       <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
@@ -17,7 +31,11 @@ const Charts = () => {
               chartOptions={barChartOptionsDailyTraffic}
             />
           </div>
-          <TabsButton />
+          <TabsButton
+            tabs={tabs}
+            selectedTab={selectedTab}
+            onTabClick={handleTabClick}
+          />
 
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
@@ -29,7 +47,11 @@ const Charts = () => {
           <div style={{ height: "400px" }}>
             <Map />
           </div>
-          <TabsButton />
+          <TabsButton
+            tabs={tabs}
+            selectedTab={selectedTab}
+            onTabClick={handleTabClick}
+          />
 
           <div className="flex pt-6">
             <p className="grow text-center font-popi text-2xl font-medium">
