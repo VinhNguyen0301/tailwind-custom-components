@@ -1,4 +1,3 @@
-import React from "react";
 
 const Collections = () => {
   const TAGS: string[] = ["Profile", " New York", "Relax", "Person", "Fashion"];
