@@ -16,7 +16,7 @@ function SpinningCube() {
   return (
     <mesh ref={cubeRef}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="hotpink" />
+      <meshStandardMaterial color="lightgreen" />
     </mesh>
   );
 }

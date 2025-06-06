@@ -1,24 +1,30 @@
-import ConnectWallet from "./Button-Connect-Wallet/ConnectWallet";
-import UserProfile from "./Component-1/UserProfile";
-import JobList from "./Component-2/JobList";
-import Collections from "./Component-3/Collections";
-import ReviewForm from "./Component-4/ReviewForm";
-import UserList from "./Component-5/UserList";
-import Charts from "./Component-6/Chart";
-import Animation from "./Component-7/Animation";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { routes } from './routes';
 
 function App() {
   return (
-    <h1 className="flex min-h-screen w-full items-center justify-center bg-[#E6EFFA]">
-      {/* <UserProfile /> */}
-      {/* <JobList /> */}
-      {/* <Collections /> */}
-      {/* <ReviewForm /> */}
-      {/* <UserList /> */}
-      {/* <Charts /> */}
-      {/* <ConnectWallet /> */}
-      <Animation />
-    </h1>
+    <Router>
+    <div className="flex min-h-screen bg-[#E6EFFA]">
+      <nav className="w-1/5 p-4 bg-white shadow">
+        <ul className="space-y-2">
+          {routes.map((route, index) => (
+            <li key={index}>
+              <Link to={route.path} className="text-blue-500 hover:underline">
+                {route.path === '/' ? 'Home' : route.path.slice(1)}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <main className="flex-1 p-4">
+        <Routes>
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Routes>
+      </main>
+    </div>
+  </Router>
   );
 }
 
