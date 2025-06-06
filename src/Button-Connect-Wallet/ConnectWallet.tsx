@@ -1,32 +1,33 @@
 import React, { useState } from "react";
-import { ethers } from "ethers";
-import { ExternalProvider } from "@ethersproject/providers";
+// import { ethers } from "ethers";
+// import { ExternalProvider } from "@ethersproject/providers";
 
-declare global {
-  interface Window {
-    ethereum?: ExternalProvider;
-  }
-}
+// declare global {
+//   interface Window {
+//     ethereum?: ExternalProvider;
+//   }
+// }
 
 const ConnectWallet: React.FC = () => {
   const [account, setAccount] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const connectWallet = async () => {
-    if (window.ethereum) {
-      try {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const accounts = await provider.send("eth_requestAccounts", []);
-        setAccount(accounts[0]);
-        setErrorMessage(null); // Clear any previous errors
-      } catch (error) {
-        console.error("User rejected the request.");
-        setErrorMessage("Connection request was rejected by the user.");
-      }
-    } else {
-      console.error("Metamask is not installed.");
-      setErrorMessage("Metamask is not installed.");
-    }
+    // if (window.ethereum) {
+    //   try {
+    //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+    //     const accounts = await provider.send("eth_requestAccounts", []);
+    //     setAccount(accounts[0]);
+    //     setErrorMessage(null); // Clear any previous errors
+    //   } catch (error) {
+    //     console.error("User rejected the request.");
+    //     setErrorMessage("Connection request was rejected by the user.");
+    //   }
+    // } else {
+    //   console.error("Metamask is not installed.");
+    //   setErrorMessage("Metamask is not installed.");
+    // }
+    setAccount('0xFakeAccount');
   };
 
   return (
@@ -44,7 +45,7 @@ const ConnectWallet: React.FC = () => {
           >
             Connect Wallet
           </button>
-          {errorMessage && <p className="mt-2 text-red-500">{errorMessage}</p>}
+          {/* {errorMessage && <p className="mt-2 text-red-500">{errorMessage}</p>} */}
         </>
       )}
     </div>
