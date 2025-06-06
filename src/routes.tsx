@@ -14,7 +14,7 @@ export const routes = [
   { path: '/collection', element: <Collections /> },
   { path: '/reviewform', element: <ReviewForm /> },
   { path: '/userlist', element: <UserList /> },
-  { path: '/chart', element: <Charts data={[]} /> },
+  { path: '/chart', element: <Charts /> },
   { path: '/animation', element: <Animation /> },
   { path: '/connectwallet', element: <ConnectWallet /> },
 

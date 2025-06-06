@@ -15,7 +15,7 @@ interface TableRow {
   weight: string;
 }
 interface TableProps {
-  data: TableRow[];
+  data?: TableRow[];
 }
 
 const Charts: React.FC<TableProps> = () => {
